@@ -1,26 +1,26 @@
 <x-layout>
     <x-slot name="header">
-        <h1>Nuevo Post</h1>
+        <h1>Editar Post</h1>
     </x-slot>
 
     <x-slot name="content">
-        <form action="/posts/create" method="POST">
+        <form action="/posts/{{$post->id}}/edit" method="POST">
             @csrf
             <label>
                 Titulo:
-                <input type="text" name="title">
+                <input type="text" name="title" value="{{$post->title}}">
             <label>
             <br/>
             <label>
                 Contenido:
-                <textarea name="category"></textarea>
+                <textarea name="category">{{$post->content}}"</textarea>
             <label>
             
             <br/>
             <label>
 
                 Categoria:
-                <input type="text" name="content">
+                <input type="text" name="content" value="{{$post->category}}">
             <label>
             <br/>
             <button type="submit">Guardar</button>

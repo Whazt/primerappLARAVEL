@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StorePostRequest;
 use function Pest\Laravel\post;
 
 class PostController extends Controller
@@ -29,8 +29,14 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
+        // $request->validate([
+        //     'title' => ['required', 'string', 'max:255'],
+        //     'content' => 'required',
+        //     'category' => 'required',
+        // ]); 
+
         $post = new Post;
         $post->title = $request->title;
         $post->content = $request->content;
